@@ -1,0 +1,25 @@
+package util;
+
+import gui::GUI;
+
+public class PixelPainter
+{
+	static gui->GUI = GUI.getInstance();
+
+	public static draw(x->int, y->int, data->int[])
+	{
+		if(data != null){
+			i->int = 0;
+			while(i<data.length)
+			{
+				PixelPainter.gui.draw(y+data[i+1], x+data[i], 'm');
+				i+=2;
+			}
+		}
+	}
+
+	public static redraw()
+	{
+		PixelPainter.gui.clear();
+	}
+}

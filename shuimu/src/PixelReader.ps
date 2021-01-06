@@ -1,0 +1,50 @@
+package util;
+
+import std::Type;
+import std::io::FileReader;
+import std::collection::ArrayList;
+
+public class PixelReader
+{
+	public static read(path->const char[])->int[]
+	{
+		in->FileReader = new FileReader(path);
+		if(in.available())
+		{
+			text->const char[] = in.read();
+			in.close();
+			list->ArrayList = new ArrayList();
+			row->int = 0;
+			col->int = 0;
+			i->int = 0;
+			while(i<text.length)
+			{
+				if(text[i]=='\0') break;
+				if(text[i]=='\n')
+				{
+					++row;
+					col=0;
+				}
+				else if(text[i]=='\r');
+				else if(text[i]==' ') ++col;
+				else
+				{
+					list.add(Type.get(row));
+					list.add(Type.get(col));
+					++col;
+				}
+				++i;
+			}
+			if(list.empty()) return null;
+			arr->int[] = new int[list.size()];
+			i=0;
+			while(i<arr.length){
+				arr[i] = list.get(i)->(Type).intValue();
+				++i;
+			}
+			return arr;
+		}
+		return null;
+	}
+
+}

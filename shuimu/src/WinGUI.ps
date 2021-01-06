@@ -1,0 +1,25 @@
+package gui;
+
+import std::IO;
+import std::Type;
+
+public class WinGUI : GUI
+{
+	handle->long = 0;
+	public WinGUI()
+	{
+		handle = WinGUI._link();
+	}
+
+	public draw(x->int, y->int, ch->char)
+	{
+		WinGUI._draw(handle, x,y,ch);
+	}
+	public clear()
+	{
+		result->int = std::OS.system("cls");
+	}
+
+	static native _link()->long;
+	static native _draw(hnd->long, x->int, y->int, ch->char);
+}
