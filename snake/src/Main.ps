@@ -1,11 +1,54 @@
 import std::IO;
 import std::Type;
+import std::OS;
+import std::TIME;
+
 import snake::Snake;
 
 class Main
 {
 	public static main()
 	{
-		new Snake();
+		snake->Snake = new Snake();
+		
+		L->int = 0;
+		R->int = 50;
+		
+		T->int = 0;
+		B->int = 20;
+		
+		OS.srand(TIME.time());
+		
+		times->int = 0;
+		offX->int = 1;
+		offY->int = 1;
+		
+		while(true)
+		{
+			OS.system("cls");
+
+			if(times >= 5)
+			{
+				offX = (OS.rand() % 3)-1;
+				offY = (OS.rand() % 3)-1;
+				times = 0;
+			}
+			
+			++times;
+			
+			x->int = snake.getX() + offX;
+			y->int = snake.getY() + offY;
+			
+			if(x < L) x = L;
+			else if(x > R) x = R;
+			if(y < T) y = T;
+			else if(y > B) y = B;
+			
+			snake.move(x, y);
+			
+			snake.update();
+			co_yield null;
+		}
+		
 	}
 }

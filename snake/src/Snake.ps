@@ -1,13 +1,53 @@
 package snake;
 
-import std::IO;
-import std::Type;
-import std::OS;
+import gui::GUI;
 
-public class Snake
+public class Snake : GameObject
 {
 	public Snake()
 	{
-		IO.printf("Hello");
+		super();
+		i->int = 0;
+		while(i < s.length)
+		{
+			s[i][0] = i;
+			s[i][1] = 0;
+			++i;
+		}
 	}
+	
+	public update()
+	{
+		i->int = 0;
+		while(i<s.length)
+		{
+			gui.draw(s[i][0], s[i][1], '#');
+			++i;
+		}
+	}
+	
+	public move(x->int, y->int)
+	{
+		i->int=0;
+		while(i+1<s.length)
+		{
+			s[i][0] = s[i+1][0];
+			s[i][1] = s[i+1][1];
+			++i;
+		}
+		s[s.length-1][0] = x;
+		s[s.length-1][1] = y;
+	}
+	
+	public getX()->int
+	{
+		return s[s.length-1][0];
+	}
+	
+	public getY()->int
+	{
+		return s[s.length-1][1];
+	}
+	
+	s->int[][] = new int[50][2];
 }
