@@ -9,7 +9,7 @@ Plang语言编写的水母动画示例
 #### 使用说明
 
 1. 下载工程压缩包，本地解压
-2. 双击运行.bat
+2. run.bat
 
 #### 编程语言
 [Plang编程语言](https://gitee.com/chivenzhang/plang-release)
