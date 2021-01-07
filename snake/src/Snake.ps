@@ -21,7 +21,7 @@ public class Snake : GameObject
 		i->int = 0;
 		while(i<s.length)
 		{
-			gui.draw(s[i][0], s[i][1], '#');
+			gui.draw(s[i][0], s[i][1], 'o');
 			++i;
 		}
 	}
@@ -49,5 +49,5 @@ public class Snake : GameObject
 		return s[s.length-1][1];
 	}
 	
-	s->int[][] = new int[50][2];
+	s->int[][] = new int[500][2];
 }

@@ -9,6 +9,7 @@ class Main
 {
 	public static main()
 	{
+		OS.system("cls");
 		snake->Snake = new Snake();
 		
 		L->int = 0;
@@ -29,8 +30,8 @@ class Main
 
 			if(times >= 5)
 			{
-				offX = (OS.rand() % 3)-1;
-				offY = (OS.rand() % 3)-1;
+				offX = (OS.rand() % 2) == 0 ? -1 : 1;
+				offY = (OS.rand() % 2) == 0 ? -1 : 1;
 				times = 0;
 			}
 			
