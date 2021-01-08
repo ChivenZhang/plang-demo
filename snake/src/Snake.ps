@@ -1,6 +1,7 @@
 package snake;
 
 import gui::GUI;
+import std::collection::ArrayList;
 
 public class Snake : GameObject
 {
@@ -19,7 +20,7 @@ public class Snake : GameObject
 	public update()
 	{
 		i->int = 0;
-		while(i<s.length)
+		while(i < s.length)
 		{
 			gui.draw(s[i][0], s[i][1], 'o');
 			++i;
@@ -49,5 +50,6 @@ public class Snake : GameObject
 		return s[s.length-1][1];
 	}
 	
-	s->int[][] = new int[5][2];
+	s->int[][] = new int[20][2];
+
 }
