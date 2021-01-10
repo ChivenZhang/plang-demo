@@ -28,6 +28,10 @@ public class Snake : GameObject
 	
 	public move(x->int, y->int)
 	{
+		if(x == s[s.length-2][0] && y == s[s.length-2][1])
+		{
+			return;
+		}
 		i->int=0;
 		while(i+1<s.length)
 		{
@@ -49,5 +53,5 @@ public class Snake : GameObject
 		return s[s.length-1][1];
 	}
 	
-	s->int[][] = new int[5][2];
+	s->int[][] = new int[10][2];
 }
