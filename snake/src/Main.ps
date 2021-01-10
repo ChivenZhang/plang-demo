@@ -5,13 +5,17 @@ import std::TIME;
 import std::IOEXT;
 
 import snake::Snake;
+import snake::Food;
 
 class Main
 {
 	public static main()
 	{
 		OS.system("cls");
+		OS.srand(TIME.time());
+		
 		snake->Snake = new Snake();
+		food->Food = new Food();
 		
 		L->int = 0;
 		R->int = 50;
@@ -19,7 +23,7 @@ class Main
 		T->int = 0;
 		B->int = 20;
 		
-		OS.srand(TIME.time());
+		food.update((L+R)/2, (T+B)/2);
 		
 		times->int = 0;
 		offX->int = 0;
@@ -75,13 +79,22 @@ class Main
 				
 				if(L <= x && x<= R && T <= y && y <= B)
 				{
-					snake.move(x, y);
+					if(snake.update(x, y) == false)
+					{
+						break;
+					}
+					if(snake.getX() == food.getX() && snake.getY() == food.getY())
+					{
+						food.update(OS.rand() % (L+R), OS.rand() % (T+B));
+					}
 				}
 			}
-				
+			food.update();
 			snake.update();
 			co_yield null;
 		}
+		
+		IO.printf("game over!");
 		
 	}
 }

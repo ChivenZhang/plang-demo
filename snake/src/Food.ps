@@ -1,6 +1,34 @@
 package snake;
 
-class Food
+
+public class Food : GameObject
 {
+	public Food()
+	{
+		super();
+	}
+	
+	public update()
+	{
+		gui.draw(x, y, '@');
+	}
+	
+	public update(x->int, y->int)->boolean
+	{
+		if(x==this.x && y==this.y)
+		{
+			return true;
+		}
+		this.x = x;
+		this.y = y;
+		return true;
+	}
+	
+	public getX()->int {return x;}
+	
+	public getY()->int {return y;}
+	
+	protected x->int = 0;
+	protected y->int = 0;
 	
 }
