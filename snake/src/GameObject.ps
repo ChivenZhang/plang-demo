@@ -7,6 +7,12 @@ public class GameObject
 	public GameObject(){}
 
 	public update(){}
+	
+	public update(x->int, y->int)->boolean { return false; }
+	
+	public getX()->int {return 0;}
+	
+	public getY()->int {return 0;}
 
 	protected gui->GUI = gui::GUI.getInstance();
 }

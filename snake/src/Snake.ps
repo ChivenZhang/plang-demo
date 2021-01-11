@@ -20,16 +20,29 @@ public class Snake : GameObject
 	public update()
 	{
 		i->int = 0;
-		while(i < s.length)
+		while(i<s.length)
 		{
-			gui.draw(s[i][0], s[i][1], 'o');
+			gui.draw(s[i][0], s[i][1], '6');
 			++i;
 		}
 	}
 	
-	public move(x->int, y->int)
+	public update(x->int, y->int)->boolean
 	{
 		i->int=0;
+		while(i+2<s.length)
+		{
+			if(x == s[i][0] && y == s[i][1])
+			{
+				return false;
+			}
+			++i;
+		}
+		if(x == s[s.length-2][0] && y == s[s.length-2][1])
+		{
+			return true;
+		}
+		i=0;
 		while(i+1<s.length)
 		{
 			s[i][0] = s[i+1][0];
@@ -38,6 +51,7 @@ public class Snake : GameObject
 		}
 		s[s.length-1][0] = x;
 		s[s.length-1][1] = y;
+		return true;
 	}
 	
 	public getX()->int
@@ -50,6 +64,5 @@ public class Snake : GameObject
 		return s[s.length-1][1];
 	}
 	
-	s->int[][] = new int[20][2];
-
+	s->int[][] = new int[10][2];
 }
