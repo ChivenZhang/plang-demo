@@ -1,0 +1,14 @@
+package gui;
+
+import std::Object;
+
+public class GUI : Object
+{
+	public draw(x->int, y->int, ch->char){ }
+	public clear(){ }
+
+	public static getInstance()->GUI
+	{
+		return new WinGUI();
+	}
+}

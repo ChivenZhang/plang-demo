@@ -1,0 +1,60 @@
+package mario;
+import std::IO;
+import std::Type;
+
+import std::TIME;
+
+public class Mario : GameObject
+{
+	public Mario()
+	{
+		super();
+	}
+
+	public update()
+	{
+		gui.draw(x+offX, y+offY, 'm');
+	}
+
+	public update(x->int, y->int)->boolean
+	{
+		if(run)
+		{
+			time->long = TIME.clock();
+			t->float = (time-lastTime) * 0.001;
+			v0->float = -20;
+			offY = v0 * t + 20 * t * t;
+			offX += x==0 ? 0f : (x<0 ? -0.5f : 0.5f);
+
+			if(offY >0) 
+			{
+				lastTime = TIME.clock();
+				run = false;
+			}
+		}
+		return run;
+	}
+
+	public reset()
+	{
+		lastTime = TIME.clock();
+		run = true;
+	}
+
+	public getX()->int
+	{
+		return x + offX;
+	}
+
+	public getY()->int
+	{
+		return y + offY;
+	}
+
+	x->int = 5;
+	y->int = 10;
+	offX->float = 0;
+	offY->float = 0;
+	run->boolean = false;
+	lastTime->long = TIME.clock();
+}
