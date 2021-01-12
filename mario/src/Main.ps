@@ -1,0 +1,76 @@
+import std::IO;
+import std::Type;
+
+import mario::Mario;
+import mario::MushRoom;
+import std::IOEXT;
+import std::OS;
+
+public class Main
+{
+	public static main()
+	{
+		m->Mario = new Mario();
+		n->MushRoom = new MushRoom();
+
+		L->int = 0;
+		R->int = 50;
+		
+		T->int = 0;
+		B->int = 20;
+		
+		offX->int = 1;
+		offY->int = 0;
+
+		while(true)
+		{
+			OS.system("cls");
+
+			a->int = IOEXT.key('A');
+			d->int = IOEXT.key('D');
+			w->int = IOEXT.key('W');
+			s->int = IOEXT.key('S');
+			q->int = IOEXT.key('Q');
+
+			if(q != 0)
+			{
+				break;
+			}
+
+			if(a != 0 && d != 0)
+			{
+				;
+			}
+			else if(a != 0)
+			{
+				offX = -1;
+				m.reset();
+			}
+			else if(d != 0)
+			{
+				offX = 1;
+				m.reset();
+			}
+			
+			if(offX != 0)
+			{
+				if(m.update(offX, offY) == false)
+				{
+					offX = 0;
+				}
+			}
+			
+			if(n.getX() == m.getX() && n.getY() == m.getY())
+			{
+				break;
+			}
+			n.update(0,0);
+
+			m.update();
+			n.update();
+			co_yield null;
+		}
+
+		IO.printf("game over!");
+	}
+}

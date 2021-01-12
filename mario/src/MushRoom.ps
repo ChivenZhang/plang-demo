@@ -1,0 +1,45 @@
+package mario;
+
+public class MushRoom : GameObject
+{
+	public MushRoom()
+	{
+		super();
+	}
+
+	public update()
+	{
+		gui.draw(x + offX, y,'#');
+	}
+
+	public update(x->int, y->int)->boolean
+	{
+		if(run)
+		{
+			offX += 1;
+			if(offX > 20) run = false;
+		}
+		else
+		{
+			offX -= 1;
+			if(offX < -20) run = true;
+		}
+
+		return false;
+	}
+
+	public getX()->int
+	{
+		return x + offX;
+	}
+
+	public getY()->int
+	{
+		return y;
+	}
+
+	x->int = 20;
+	y->int = 10;
+	run->boolean = true;
+	offX->float = 0;
+}
