@@ -1,0 +1,62 @@
+package tank;
+
+import std::IO;
+import std::Type;
+import std::OS;
+import std::IOEXT;
+
+public class TankClient : Client
+{
+	public TankClient(){}
+	public onInit()
+	{
+		tank1 = new Tank(0,0);
+		tank2 = new Tank(40,8);
+	}
+	public onUninit(){}
+	public onUpdate()
+	{
+		if(tank1 == null || tank2 == null) return;
+		
+		// listen tank1's keyboard
+		{
+			a->int = IOEXT.key('A');
+			d->int = IOEXT.key('D');
+			w->int = IOEXT.key('W');
+			s->int = IOEXT.key('S');
+			f->int = IOEXT.key('E');
+
+			if(a!=0) tank1.move(-1,0);
+			if(d!=0) tank1.move(1,0);
+			if(w!=0) tank1.move(0,-1);
+			if(s!=0) tank1.move(0,1);
+			if(f!=0) tank1.shoot(tank2.getx(),tank2.gety());
+			
+			tank1.update();
+		}
+		
+		// listen tank2's keyboard
+		{
+			a->int = IOEXT.key('J');
+			d->int = IOEXT.key('L');
+			w->int = IOEXT.key('I');
+			s->int = IOEXT.key('K');
+			f->int = IOEXT.key('U');
+			
+			if(a!=0) tank2.move(-1,0);
+			if(d!=0) tank2.move(1,0);
+			if(w!=0) tank2.move(0,-1);
+			if(s!=0) tank2.move(0,1);
+			if(f!=0) tank2.shoot(tank1.getx(),tank1.gety());
+			
+			tank2.update();
+		}
+		
+		// calculate tanks' life here
+		// but do nothing by now
+		
+	}
+	
+	tank1->Tank;
+	tank2->Tank;
+}

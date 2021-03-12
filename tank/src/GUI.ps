@@ -2,22 +2,28 @@ package gui;
 
 import std::IO;
 import std::Type;
+import std::OS;
 
-public class WinGUI : GUI
+public class GUI
 {
 	handle->long = 0;
-	public WinGUI()
+	public GUI()
 	{
-		handle = WinGUI._link();
+		handle = GUI._link();
 	}
 
 	public draw(x->int, y->int, ch->char)
 	{
-		WinGUI._draw(handle, x,y,ch);
+		GUI._draw(handle, x,y,ch);
 	}
 	public clear()
 	{
-		result->int = std::OS.system("cls");
+		result->int = OS.system("cls");
+	}
+	
+	public static getInstance()->GUI
+	{
+		return new GUI();
 	}
 
 	static native _link()->long;

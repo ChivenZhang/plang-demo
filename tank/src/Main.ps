@@ -1,0 +1,30 @@
+import std::IO;
+import std::Type;
+import std::OS;
+import std::TIME;
+
+import tank::TankClient;
+
+class Main
+{
+	public static main()
+	{
+		OS.system("cls");
+		OS.srand(TIME.time());
+		
+		client->Client = new TankClient();
+		client.onInit();
+		
+		while(true)
+		{
+			OS.system("cls");
+			client.onUpdate();
+			co_yield null;
+		}
+		
+		client.onUninit();
+
+		IO.printf("game over!");
+		
+	}
+}

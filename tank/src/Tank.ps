@@ -1,0 +1,46 @@
+package tank;
+
+import gui::GUI;
+
+public class Tank
+{
+	public Tank()
+	{
+		bullet = new Bullet();
+	}
+	public Tank(x->int, y->int)
+	{
+		this.x = x;
+		this.y = y;
+		bullet = new Bullet(x, y);
+	}
+	
+	public update()
+	{
+		GUI.getInstance().draw(x, y, '#');
+		if(bullet != null) bullet.update();
+	}
+	
+	public move(offx->int, offy->int)
+	{
+		x += offx;
+		y += offy;
+		
+		if(x<0 || x>50) x -= offx;
+		if(y<0 || y>10) y -= offy;
+	}
+	
+	public shoot(x->int, y->int)
+	{
+		if(bullet != null) bullet.move(this.x, this.y, x, y);
+	}
+	
+	public getx()->int{return x;}
+	public gety()->int{return y;}
+	
+	x->int = 0;
+	y->int = 0;
+	life->int = 10;
+	bullet->Bullet;
+	
+}

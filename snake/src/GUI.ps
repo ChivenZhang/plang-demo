@@ -1,14 +1,31 @@
 package gui;
 
-import std::Object;
+import std::IO;
+import std::Type;
+import std::OS;
 
-public class GUI : Object
+public class GUI
 {
-	public draw(x->int, y->int, ch->char){ }
-	public clear(){ }
+	handle->long = 0;
+	public GUI()
+	{
+		handle = GUI._link();
+	}
 
+	public draw(x->int, y->int, ch->char)
+	{
+		GUI._draw(handle, x,y,ch);
+	}
+	public clear()
+	{
+		result->int = OS.system("cls");
+	}
+	
 	public static getInstance()->GUI
 	{
-		return new WinGUI();
+		return new GUI();
 	}
+
+	static native _link()->long;
+	static native _draw(hnd->long, x->int, y->int, ch->char);
 }

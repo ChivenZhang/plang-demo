@@ -1,0 +1,46 @@
+package tank;
+
+import gui::GUI;
+
+public class Bullet
+{
+	public Bullet(){}
+	public Bullet(x->int, y->int)
+	{
+		this.x = this.cx = x;
+		this.y = this.cy = y;
+	}
+
+	public update()
+	{
+		if(cx<x)++cx;
+		else if(cx>x)--cx;
+		else;
+		
+		if(cy<y)++cy;
+		else if(cy>y)--cy;
+		else;
+		
+		if(cx==x && cy == y);
+		else GUI.getInstance().draw(cx, cy, '*');
+	}
+	
+	public move(cx->int, cy->int, x->int, y->int)
+	{
+		if(x<0 || x>50);
+		else this.x = x;
+		if(y<0 || y>10);
+		else this.y = y;
+		
+		if(cx<0 || cx>50);
+		else this.cx = cx;
+		if(cy<0 || cy>10);
+		else this.cy = cy;
+	}
+	
+	x->int = 0;
+	y->int = 0;
+	cx->int = 0;
+	cy->int = 0;
+	
+}
